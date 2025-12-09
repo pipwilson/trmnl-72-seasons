@@ -8,5 +8,13 @@ polling_url: ''
 polling_headers: ''
 polling_body: ''
 id: 103813
+custom_fields:
+- keyname: doesnt_matter
+  name: About This Plugin
+  category: calendar,nature
+  field_type: author_bio
+  description: Tells you which of Japan's traditional 72 seasons it currently is.
+  github_url: https://github.com/pipwilson/trmnl-72-seasons
+  learn_more_url: https://philwilson.org/blog/2025/06/72-seasons-on-the-trmnl/
 name: 72 Japanese Seasons
 refresh_interval: 360

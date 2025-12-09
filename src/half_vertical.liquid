@@ -1,0 +1,30 @@
+{% for s in seasons %}
+  {% # convert start and end to utc timestamps and compare to system.timestamp.utc %}    
+  {% # start_utc and end_utc look like "2025-01-10" and then converted to timestamp, timestamp_utc looks like 1751222780 # %}
+  {% # end date needs to be the _end_ of the date specified, not the beginning. 23h 59m 59s is 86399s %}  
+  {% assign start_utc = trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:s.start | date: "%s" | plus: 0 %}
+  {% assign end_utc = trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:s.end | date: "%s" | plus: 86399 %}  
+  {% if trmnl.system.timestamp_utc >= start_utc and trmnl.system.timestamp_utc < end_utc %}  
+    {% assign season = s %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+<div class="layout layout--row layout--stretch">
+  <div class="flex flex--col">
+    <div class="stretch">
+      <span class="value value--large">{{ season.en }}</span>
+    </div>
+  
+    <div class="stretch">
+      <span class="value value--large">{{ season.kanji }}</span>
+    </div>
+    
+    <div class="flex flex-row flex--bottom stretch">
+      <span class="value value--tnums value--small">{{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.start | date: '%-d %B' }}
+      - {{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.end | date: '%-d %B' }}</span>
+    </div>
+  </div>
+</div>
+<div class="title_bar">
+  <span class="instance">72 kō</span>
+</div>    

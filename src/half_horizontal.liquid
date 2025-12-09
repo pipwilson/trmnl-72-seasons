@@ -9,36 +9,20 @@
     {% break %}
   {% endif %}
 {% endfor %}
+                                                                                 
 <div class="layout layout--col gap--space-between">
   <div class="grid">
-    <div class="item">
-      <div class="content">
-        <span class="value value--large">{{ season.en }}</span>
-      </div>
+    <div>
+      <span class="value">{{ season.en }}</span>
+    </div>
+    <div>
+      <span class="value value--large">{{ season.kanji }}</span>
     </div>
   </div>
 
   <div class="grid">
-    <div class="item col--span-6">
-      <div class="content">
-        <span class="value value--xxlarge" data-value-fit="true">{{ season.kanji }}</span>
-      </div>
-    </div>
-
-    <div class="col col--span-3 gap--medium">
-      <div class="item">
-        <div class="content">
-          <span class="value value--tnums">{{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.start | date: '%-d %B' }}</span>
-        </div>
-      </div>
-
-      <div class="w--full b-h-gray-5"></div>
-
-      <div class="item">
-        <div class="content">
-          <span class="value value--tnums">{{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.end | date: '%-d %B' }}</span>
-        </div>
-      </div>
+    <div>
+      <span class="value value--tnums value--small">{{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.start | date: '%-d %B' }} - {{ trmnl.system.timestamp_utc | date: "%Y" | append:"-" | append:season.end | date: '%-d %B' }}</span>
     </div>
   </div>
 </div>
